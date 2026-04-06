@@ -14,10 +14,15 @@ public class Health : MonoBehaviour
     public event Action Died;
     public event Action<int> Damaged;
     public event Action<int> Healed;
+    public event Action HealthChanged;
 
-    private void Awake()
+    public void SetMaxHealth(int maxHealth)
     {
-        _currentHP = _maxHP;
+        _maxHP = maxHealth;
+        if (_currentHP > _maxHP)
+        {
+            _currentHP = _maxHP;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -26,6 +31,7 @@ public class Health : MonoBehaviour
 
         _currentHP = Mathf.Max(0, _currentHP - damage);
         Damaged?.Invoke(damage);
+        HealthChanged?.Invoke();
 
         if (_currentHP == 0)
         {
@@ -40,6 +46,12 @@ public class Health : MonoBehaviour
         int healed = Mathf.Min(amount, _maxHP - _currentHP);
         _currentHP += healed;
         Healed?.Invoke(healed);
+        HealthChanged?.Invoke();
+    }
+
+    private void Awake()
+    {
+        _currentHP = _maxHP;
     }
 
     private void Die()
@@ -47,14 +59,5 @@ public class Health : MonoBehaviour
         Died?.Invoke();
         Debug.Log($"{name} погиб!");
         gameObject.SetActive(false);
-    }
-
-    public void SetMaxHealth(int maxHealth)
-    {
-        _maxHP = maxHealth;
-        if (_currentHP > _maxHP)
-        {
-            _currentHP = _maxHP;
-        }
     }
 }

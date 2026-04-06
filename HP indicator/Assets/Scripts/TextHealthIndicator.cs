@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TextHealthIndicator : MonoBehaviour
 {
-    [SerializeField] Health _health;
+    [SerializeField] private Health _health;
 
     private TextMeshProUGUI _text;
 
@@ -21,5 +21,15 @@ public class TextHealthIndicator : MonoBehaviour
     private void Start()
     {
         UpdateHP();
+    }
+
+    private void OnEnable()
+    {
+        _health.HealthChanged += UpdateHP;
+    }
+
+    private void OnDisable()
+    {
+        _health.HealthChanged -= UpdateHP;
     }
 }

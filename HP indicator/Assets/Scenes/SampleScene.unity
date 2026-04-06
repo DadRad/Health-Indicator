@@ -617,42 +617,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 72972597}
-        m_TargetAssemblyTypeName: HealthIndicator, Assembly-CSharp
-        m_MethodName: UpdateHP
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 548596411}
-        m_TargetAssemblyTypeName: SliderHealthBar, Assembly-CSharp
-        m_MethodName: UpdateBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 341264699}
-        m_TargetAssemblyTypeName: SliderHealthBar, Assembly-CSharp
-        m_MethodName: UpdateBarSmoothly
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &317458891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,11 +754,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 341264696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 876026e1ef2ebf84aac03e2cc91c2e40, type: 3}
+  m_Script: {fileID: 11500000, guid: ed11377529dd2684da4436296a46f310, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SliderHealthBar
+  m_EditorClassIdentifier: Assembly-CSharp::SmoothHealthBar
   _health: {fileID: 1646737287}
-  _smoothSpeed: 0.1
+  _smoothSpeed: 0.3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SliderHealthBar
   _health: {fileID: 1646737287}
-  _smoothSpeed: 0.1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,42 +1460,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 72972597}
-        m_TargetAssemblyTypeName: HealthIndicator, Assembly-CSharp
-        m_MethodName: UpdateHP
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 548596411}
-        m_TargetAssemblyTypeName: SliderHealthBar, Assembly-CSharp
-        m_MethodName: UpdateBar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 341264699}
-        m_TargetAssemblyTypeName: SliderHealthBar, Assembly-CSharp
-        m_MethodName: UpdateBarSmoothly
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0

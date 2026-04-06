@@ -51,6 +51,7 @@
     <Compile Include="Assets\Scripts\SliderHealthBar.cs" />
     <Compile Include="Assets\Scripts\TextHealthIndicator.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
+    <Compile Include="Assets\Scripts\SmoothHealthBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
