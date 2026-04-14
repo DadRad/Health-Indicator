@@ -8,11 +8,6 @@ public class SliderHealthBar : MonoBehaviour
 
     private Slider _slider;
 
-    public void UpdateBar()
-    {
-        _slider.value = _health.CurrentHealth;
-    }
-
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -31,5 +26,10 @@ public class SliderHealthBar : MonoBehaviour
     private void OnDisable()
     {
         _health.HealthChanged -= UpdateBar;
+    }
+
+    public void UpdateBar()
+    {
+        _slider.value = _health.CurrentHealth;
     }
 }

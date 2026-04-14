@@ -16,6 +16,11 @@ public class Health : MonoBehaviour
     public event Action<int> Healed;
     public event Action HealthChanged;
 
+    private void Awake()
+    {
+        _currentHP = _maxHP;
+    }
+
     public void SetMaxHealth(int maxHealth)
     {
         _maxHP = maxHealth;
@@ -47,11 +52,6 @@ public class Health : MonoBehaviour
         _currentHP += healed;
         Healed?.Invoke(healed);
         HealthChanged?.Invoke();
-    }
-
-    private void Awake()
-    {
-        _currentHP = _maxHP;
     }
 
     private void Die()

@@ -10,23 +10,6 @@ public class SmoothHealthBar : MonoBehaviour
     private Slider _slider;
     private bool _isMoving;
 
-    // public void UpdateBar()
-    // {
-    //     StopCoroutine(SmoothMove());
-    //     _isMoving = false;
-    //     _slider.value = _health.CurrentHealth;
-    // }
-
-    public void UpdateBarSmoothly()
-    {
-        if (_isMoving)
-        {
-            StopCoroutine(SmoothMove());
-        }
-
-        StartCoroutine(SmoothMove());
-    }
-
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -45,6 +28,16 @@ public class SmoothHealthBar : MonoBehaviour
     private void OnDisable()
     {
         _health.HealthChanged -= UpdateBarSmoothly;
+    }
+
+    public void UpdateBarSmoothly()
+    {
+        if (_isMoving)
+        {
+            StopCoroutine(SmoothMove());
+        }
+
+        StartCoroutine(SmoothMove());
     }
 
     private IEnumerator SmoothMove()

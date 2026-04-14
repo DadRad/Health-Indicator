@@ -7,12 +7,6 @@ public class TextHealthIndicator : MonoBehaviour
 
     private TextMeshProUGUI _text;
 
-    public void UpdateHP()
-    {
-        _text.text = _health.CurrentHealth.ToString() + "/" + _health.MaxHealth;
-        
-    }
-
     private void Awake()
     {
         _text = GetComponent<TextMeshProUGUI>();
@@ -21,6 +15,12 @@ public class TextHealthIndicator : MonoBehaviour
     private void Start()
     {
         UpdateHP();
+    }
+    
+    public void UpdateHP()
+    {
+        _text.text = _health.CurrentHealth.ToString() + "/" + _health.MaxHealth;
+        
     }
 
     private void OnEnable()
