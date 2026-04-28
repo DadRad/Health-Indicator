@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(TextMeshProUGUI))]
 public class TextHealthIndicator : MonoBehaviour
 {
     [SerializeField] private Health _health;
@@ -12,6 +13,16 @@ public class TextHealthIndicator : MonoBehaviour
         _text = GetComponent<TextMeshProUGUI>();
     }
 
+    private void OnEnable()
+    {
+        _health.HealthChanged += UpdateHP;
+    }
+
+    private void OnDisable()
+    {
+        _health.HealthChanged -= UpdateHP;
+    }
+
     private void Start()
     {
         UpdateHP();
@@ -21,15 +32,5 @@ public class TextHealthIndicator : MonoBehaviour
     {
         _text.text = _health.CurrentHealth.ToString() + "/" + _health.MaxHealth;
         
-    }
-
-    private void OnEnable()
-    {
-        _health.HealthChanged += UpdateHP;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= UpdateHP;
     }
 }
