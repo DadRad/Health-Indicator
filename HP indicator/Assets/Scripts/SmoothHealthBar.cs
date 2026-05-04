@@ -30,8 +30,7 @@ public class SmoothHealthBar : MonoBehaviour
 
     private void Start()
     {
-        _currentFillValue = GetCurrentFill();
-        _slider.value = _currentFillValue;
+        _slider.value = GetCurrentFill();
     }
 
     public void UpdateBarSmoothly()
@@ -61,7 +60,7 @@ public class SmoothHealthBar : MonoBehaviour
     
     private float GetCurrentFill()
     {
-        if (_health.MaxHealth <= 0) return 0f;
-        return (float)_health.CurrentHealth / _health.MaxHealth;
+        if (_health.MaxValue <= 0) return 0f;
+        return (float)_health.CurrentValue / _health.MaxValue;
     }
 }

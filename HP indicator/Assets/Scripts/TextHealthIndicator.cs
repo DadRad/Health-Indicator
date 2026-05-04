@@ -30,7 +30,7 @@ public class TextHealthIndicator : MonoBehaviour
     
     public void UpdateHP()
     {
-        _text.text = _health.CurrentHealth.ToString() + "/" + _health.MaxHealth;
+        _text.text = _health.CurrentValue.ToString() + "/" + _health.MaxValue;
         
     }
 }

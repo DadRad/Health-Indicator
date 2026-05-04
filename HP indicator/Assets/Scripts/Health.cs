@@ -3,30 +3,28 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHP = 100;
-    private int _currentHP;
+    [SerializeField] private int _maxHealthPoints = 100;
+    private int _currentHealthPoints;
 
     public event Action Died;
-    public event Action<int> Damaged;
-    public event Action<int> Healed;
     public event Action HealthChanged;
 
-    public int MaxHealth => _maxHP;
-    public int CurrentHealth => _currentHP;
-    public bool IsAlive => _currentHP > 0;
+    public int MaxValue => _maxHealthPoints;
+    public int CurrentValue => _currentHealthPoints;
+    public bool IsAlive => _currentHealthPoints > 0;
 
     private void Awake()
     {
-        _currentHP = _maxHP;
+        _currentHealthPoints = _maxHealthPoints;
     }
 
     public void SetMaxHealth(int maxHealth)
     {
-        _maxHP = maxHealth;
+        _maxHealthPoints = maxHealth;
 
-        if (_currentHP > _maxHP)
+        if (_currentHealthPoints > _maxHealthPoints)
         {
-            _currentHP = _maxHP;
+            _currentHealthPoints = _maxHealthPoints;
         }
     }
 
@@ -37,11 +35,10 @@ public class Health : MonoBehaviour
             return;
         }        
 
-        _currentHP = Mathf.Max(0, _currentHP - damage);
-        Damaged?.Invoke(damage);
+        _currentHealthPoints = Mathf.Max(0, _currentHealthPoints - damage);
         HealthChanged?.Invoke();
 
-        if (_currentHP == 0)
+        if (_currentHealthPoints == 0)
         {
             Die();
         }
@@ -49,11 +46,13 @@ public class Health : MonoBehaviour
 
     public void RestoreHealth(int amount)
     {
-        if (amount <= 0 || !IsAlive) return;
+        if (amount <= 0 || !IsAlive)
+        {
+            return;
+        }
 
-        int healed = Mathf.Min(amount, _maxHP - _currentHP);
-        _currentHP += healed;
-        Healed?.Invoke(healed);
+        int healed = Mathf.Min(amount, _maxHealthPoints - _currentHealthPoints);
+        _currentHealthPoints += healed;
         HealthChanged?.Invoke();
     }
 

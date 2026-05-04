@@ -27,7 +27,6 @@ public class SliderHealthBar : MonoBehaviour
 
     private void Start()
     {
-        _currentFillValue = GetCurrentFill();
         UpdateBar();
     }
 
@@ -39,7 +38,10 @@ public class SliderHealthBar : MonoBehaviour
 
     private float GetCurrentFill()
     {
-        if (_health.MaxHealth <= 0) return 0f;
-        return (float)_health.CurrentHealth / _health.MaxHealth;
+        if (_health.MaxValue <= 0)
+        {
+            return 0f;
+        }
+        return (float)_health.CurrentValue / _health.MaxValue;
     }
 }
