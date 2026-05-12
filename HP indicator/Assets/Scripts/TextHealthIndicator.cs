@@ -2,10 +2,8 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(TextMeshProUGUI))]
-public class TextHealthIndicator : MonoBehaviour
+public class TextHealthIndicator : HealthUIBase
 {
-    [SerializeField] private Health _health;
-
     private TextMeshProUGUI _text;
 
     private void Awake()
@@ -13,24 +11,8 @@ public class TextHealthIndicator : MonoBehaviour
         _text = GetComponent<TextMeshProUGUI>();
     }
 
-    private void OnEnable()
-    {
-        _health.HealthChanged += UpdateHP;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= UpdateHP;
-    }
-
-    private void Start()
-    {
-        UpdateHP();
-    }
-    
-    public void UpdateHP()
+    protected override void OnHealthChanged()
     {
         _text.text = _health.CurrentValue.ToString() + "/" + _health.MaxValue;
-        
     }
 }

@@ -1,47 +1,18 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class SliderHealthBar : MonoBehaviour
+public class SliderHealthBar : HealthUIBase
 {
-    [SerializeField] private Health _health;
-
     private Slider _slider;
-    private float _currentFillValue;
 
     private void Awake()
     {
         _slider = GetComponent<Slider>();
     }
 
-    private void OnEnable()
+    protected override void OnHealthChanged()
     {
-        _health.HealthChanged += UpdateBar;
-    }
-
-    private void OnDisable()
-    {
-        _health.HealthChanged -= UpdateBar;
-    }
-
-    private void Start()
-    {
-        UpdateBar();
-    }
-
-    public void UpdateBar()
-    {
-        _currentFillValue = GetCurrentFill();
-        _slider.value = _currentFillValue;
-    }
-
-    private float GetCurrentFill()
-    {
-        if (_health.MaxValue <= 0)
-        {
-            return 0f;
-        }
-        return (float)_health.CurrentValue / _health.MaxValue;
+        _slider.value = GetCurrentFill();
     }
 }

@@ -607,7 +607,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1646737287}
         m_TargetAssemblyTypeName: Health, Assembly-CSharp
-        m_MethodName: RestoreHealth
+        m_MethodName: RestoreValue
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1778,7 +1778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d0eaf1be7458e42b1f2caf4859d415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
-  _maxHP: 100
+  _maxValue: 100
 --- !u!4 &1646737288
 Transform:
   m_ObjectHideFlags: 0

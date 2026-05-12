@@ -3,28 +3,28 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _maxHealthPoints = 100;
-    private int _currentHealthPoints;
+    [SerializeField] private int _maxValue = 100;
+    private int _currentValue;
 
     public event Action Died;
-    public event Action HealthChanged;
+    public event Action ValueChanged;
 
-    public int MaxValue => _maxHealthPoints;
-    public int CurrentValue => _currentHealthPoints;
-    public bool IsAlive => _currentHealthPoints > 0;
+    public int MaxValue => _maxValue;
+    public int CurrentValue => _currentValue;
+    public bool IsAlive => _currentValue > 0;
 
     private void Awake()
     {
-        _currentHealthPoints = _maxHealthPoints;
+        _currentValue = _maxValue;
     }
 
-    public void SetMaxHealth(int maxHealth)
+    public void SetMaxValue(int maxValue)
     {
-        _maxHealthPoints = maxHealth;
+        _maxValue = maxValue;
 
-        if (_currentHealthPoints > _maxHealthPoints)
+        if (_currentValue > _maxValue)
         {
-            _currentHealthPoints = _maxHealthPoints;
+            _currentValue = _maxValue;
         }
     }
 
@@ -35,25 +35,25 @@ public class Health : MonoBehaviour
             return;
         }        
 
-        _currentHealthPoints = Mathf.Max(0, _currentHealthPoints - damage);
-        HealthChanged?.Invoke();
+        _currentValue = Mathf.Max(0, _currentValue - damage);
+        ValueChanged?.Invoke();
 
-        if (_currentHealthPoints == 0)
+        if (_currentValue == 0)
         {
             Die();
         }
     }
 
-    public void RestoreHealth(int amount)
+    public void RestoreValue(int amount)
     {
         if (amount <= 0 || !IsAlive)
         {
             return;
         }
 
-        int healed = Mathf.Min(amount, _maxHealthPoints - _currentHealthPoints);
-        _currentHealthPoints += healed;
-        HealthChanged?.Invoke();
+        int healed = Mathf.Min(amount, _maxValue - _currentValue);
+        _currentValue += healed;
+        ValueChanged?.Invoke();
     }
 
     private void Die()
